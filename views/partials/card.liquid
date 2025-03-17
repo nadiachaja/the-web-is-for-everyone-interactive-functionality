@@ -1,0 +1,28 @@
+{% comment %} <a href="/cadeau/{{ item.slug }}" class="card">
+    <img src="{{ item.image }}" width="150" height="130" alt="">
+    <h3>{{ item.name }}</h3>
+    <img src="/assets/persoons.svg" alt="spotters">
+    <p>+30 saved</p>
+    <img src="/assets/cadeau.svg" alt="cadeau">
+    <p>+4 gived</p>
+</a> {% endcomment %}
+
+
+<article class="card size-{{ size }}">
+    <div class="wrapper-img">
+        <img class="product-img" src="{{ item.image }}" width="150" height="130" alt="{{ item.name }}">
+        <button class="save-favourite-btn"><img class="image-to-favourite" src="/assets/tofavourite.svg"
+                alt="to favourite"></button>
+    </div>
+    <h3 class="product-name"><a class="slug" href="/cadeau/{{ item.slug }}">{{ item.name }}</a></h3>
+    <div class="whapper-spotter-gived-info">
+    <div class="spotter-info">
+        <img class="saved-spotters-img" src="/assets/persoons.svg" alt="spotters">
+        <p class="product-saved">+30 saved</p>
+    </div>
+    <div class="spotter-info">
+        <img class="gived-cadeau-img" src="/assets/cadeau.svg" alt="cadeau">
+        <p class="product-gived">+4 gived</p>
+    </div>
+</div>
+</article>

@@ -1,9 +1,23 @@
+
+
+
 // Importeer het npm package Express (uit de door npm aangemaakte node_modules map)
 // Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
 import express from 'express'
 
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
+
+// API endpoints:
+const likesBaseUrl = 'https://fdnd-agency.directus.app/items/milledoni_users/1'
+const likesResponse = await fetch(likesBaseUrl)
+const likesResponseJSON = await likesResponse.json()
+
+const apiResponse = await fetch('https://fdnd-agency.directus.app/items/milledoni_products')
+const apiResponseJSON = await apiResponse.json()
+
+
+
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
@@ -26,14 +40,49 @@ app.set('views', './views')
 
 console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
-app.get(…, async function (request, response) {
-  
-  // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
-  response.render(…)
+app.get('/', async function (request, response) {
+  // Geef hier eventueel data aan mee
+  response.render('index.liquid', { items: apiResponseJSON.data })
 })
-*/
+
+app.get('/cadeau/:slug', async function (request, response) {
+  const slug = request.params.slug;
+  const apiResponseCadeau = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products?filter={"slug":"${slug}"}&limit=1`)
+
+  const apiResponseCadeauJSON = await apiResponseCadeau.json()
+  
+  if(apiResponseCadeauJSON.data[0]){
+    response.render('cadeau.liquid', { item: apiResponseCadeauJSON.data[0], items: apiResponseJSON.data})
+  } else {
+    response.render('404.liquid');
+  }
+})
+
+app.get('/favourite', async function (request, response) {
+  const apiResponseFavourite = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products`)
+
+  const apiResponseFavouriteJSON = await apiResponseFavourite.json()
+  
+  if(apiResponseFavouriteJSON.data[0]){
+    response.render('favourite.liquid', { item: apiResponseFavouriteJSON.data[0], items: apiResponseJSON.data})
+  } else {
+    response.render('404.liquid');
+  }
+})
+
+app.use((req, res, next) => {
+  res.status(404).render("404.liquid")
+})
+
+
+app.post('/', async function (request, response) {
+  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+  response.redirect(303, '/')
+})
+
+
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
