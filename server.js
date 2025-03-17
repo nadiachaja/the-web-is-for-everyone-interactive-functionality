@@ -1,12 +1,11 @@
-
-
-
 // Importeer het npm package Express (uit de door npm aangemaakte node_modules map)
 // Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
 import express from 'express'
 
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
+
+
 
 // API endpoints:
 const likesBaseUrl = 'https://fdnd-agency.directus.app/items/milledoni_users/1'
@@ -16,14 +15,26 @@ const likesResponseJSON = await likesResponse.json()
 const apiResponse = await fetch('https://fdnd-agency.directus.app/items/milledoni_products')
 const apiResponseJSON = await apiResponse.json()
 
+// Je kunt de volgende URLs uit onze API gebruiken:
+// - https://fdnd.directus.app/items/tribe
+// - https://fdnd.directus.app/items/squad
+// - https://fdnd.directus.app/items/person
+// En combineren met verschillende query parameters als filter, sort, search, etc.
+// Gebruik hiervoor de documentatie van https://directus.io/docs/guides/connect/query-parameters
+// En de oefeningen uit https://github.com/fdnd-task/connect-your-tribe-squad-page/blob/main/docs/squad-page-ontwerpen.md
 
+// Haal alle eerstejaars squads uit de WHOIS API op van dit jaar (2024–2025)
+const squadResponse = await fetch('https://fdnd.directus.app/items/squad?filter={"_and":[{"cohort":"2425"},{"tribe":{"name":"FDND Jaar 1"}}]}')
+
+// Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
+const squadResponseJSON = await squadResponse.json()
+
+// Controleer de data in je console (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
+// console.log(squadResponseJSON)
 
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
-
-// Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
 
 // Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
@@ -31,93 +42,68 @@ app.use(express.static('public'))
 
 // Stel Liquid in als 'view engine'
 const engine = new Liquid();
-app.engine('liquid', engine.express());
+app.engine('liquid', engine.express()); 
 
 // Stel de map met Liquid templates in
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+// Zorg dat werken met request data makkelijker wordt
+app.use(express.urlencoded({extended: true}))
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 
 app.get('/', async function (request, response) {
   // Geef hier eventueel data aan mee
   response.render('index.liquid', { items: apiResponseJSON.data })
 })
 
-app.get('/cadeau/:slug', async function (request, response) {
-  const slug = request.params.slug;
-  const apiResponseCadeau = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products?filter={"slug":"${slug}"}&limit=1`)
-
-  const apiResponseCadeauJSON = await apiResponseCadeau.json()
-  
-  if(apiResponseCadeauJSON.data[0]){
-    response.render('cadeau.liquid', { item: apiResponseCadeauJSON.data[0], items: apiResponseJSON.data})
-  } else {
-    response.render('404.liquid');
-  }
-})
-
-app.get('/favourite', async function (request, response) {
-  const apiResponseFavourite = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products`)
-
-  const apiResponseFavouriteJSON = await apiResponseFavourite.json()
-  
-  if(apiResponseFavouriteJSON.data[0]){
-    response.render('favourite.liquid', { item: apiResponseFavouriteJSON.data[0], items: apiResponseJSON.data})
-  } else {
-    response.render('404.liquid');
-  }
-})
-
-app.use((req, res, next) => {
-  res.status(404).render("404.liquid")
-})
-
-
-app.post('/', async function (request, response) {
+// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
+app.post('/gifts/:id', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+  const giftId = request.params.id
+
+  const currentGifts = likesResponseJSON.data.saved_products
+  console.log(currentGifts)
+  currentGifts.push(giftId)
+  const giftExists = currentGifts.includes(giftId);
+
+const patchResponse = await fetch( likesBaseUrl, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data: {
+        saved_products: currentGifts,
+      }
+    }),
+  })
+  console.log(patchResponse)
+
+  // Er is nog geen afhandeling van POST, redirect naar GET op /
   response.redirect(303, '/')
 })
 
 
-
-
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
-app.post(…, async function (request, response) {
-
-  // In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
-  console.log(request.body)
-
-  // Via een fetch() naar Directus vullen we nieuwe gegevens in
-
-  // Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
-  // Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
-  // Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
-  // Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
-  await fetch(…, {
-    method: …,
-    body: JSON.stringify(…),
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  });
-
-  // Redirect de gebruiker daarna naar een logische volgende stap
-  // Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
-  response.redirect(303, …)
+// Maak een GET route voor een detailpagina met een route parameter, id
+// Zie de documentatie van Express voor meer info: https://expressjs.com/en/guide/routing.html#route-parameters
+app.get('/student/:id', async function (request, response) {
+  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+  const personDetailResponse = await fetch('https://fdnd.directus.app/items/person/' + request.params.id)
+  // En haal daarvan de JSON op
+  const personDetailResponseJSON = await personDetailResponse.json()
+  
+  // Render student.liquid uit de views map en geef de opgehaalde data mee als variable, genaamd person
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('student.liquid', {person: personDetailResponseJSON.data, squads: squadResponseJSON.data})
 })
-*/
 
 
-// Stel het poortnummer in waar Express op moet gaan luisteren
-// Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
+// Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 
-// Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
+// Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console
-  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
+  // Toon een bericht in de console en geef het poortnummer door
+  console.log(`Application started on http://localhost:${app.get('port')}`)
 })
