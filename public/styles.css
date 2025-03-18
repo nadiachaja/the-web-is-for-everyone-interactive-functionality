@@ -246,7 +246,7 @@ legend {
     border-radius: var(--border-radius-xxxs);
     font-size: var(--xs-paragraph);
     line-height: var(--line-height-m);
-    width: 4em;
+    width: 5em;
     border: 1px solid var(--bg-register);
     color: var(--bg-register);
     box-shadow: var(--box-shadow-m);
@@ -333,6 +333,10 @@ legend {
     box-shadow: var(--box-shadow-m);
 }
 
+input::placeholder {
+    font-size: 14px;
+}
+
 .to-chat-btn {
     position: absolute;
     top: 50%;
@@ -347,13 +351,14 @@ legend {
     border-radius: var(--border-radius-xxxl);
 }
 
-.text-chat {
+/* .text-chat {
     font-size: var(--xs-paragraph);
     color: var(--bg-register);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-general);
     margin-left: 1em;
-}
+} */
+
 
 .container-search{
     margin-bottom: 2em;
@@ -482,6 +487,7 @@ legend {
     width: 5.5em;
     position: relative;
     left: 5em;
+    bottom: 1em;
     z-index: 1;
 }
 
@@ -489,7 +495,7 @@ legend {
     width: 4.5em;
     position: relative;
     left: 1.5em;
-    bottom: 3em;
+    bottom: 4em;
 }
 
 .register-btn {
@@ -501,6 +507,8 @@ legend {
     display: flex;
     justify-content: center;
     text-decoration: none;
+    position: relative;
+    bottom: 1.5em;
 }
 
 

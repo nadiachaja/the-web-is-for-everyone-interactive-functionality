@@ -8,10 +8,10 @@
         {% for item in items %}
         {% if forloop.index == 2 %}
         <div class="wrapper-register">
-            <h1 class="text-register">Create a list for your best friend</h1>
+            <h1 class="text-register">Maak een lijst voor je beste vriend</h1>
             <img class="img-person-regsiter" src="/assets/register.svg" alt="">
             <img class="img-bloem-register" src="/assets/bloem.svg" alt="">
-            <a class="register-btn" href="#">Register or log in</a>
+            <a class="register-btn" href="#">Register of log in</a>
         </div>
         {% endif %}
         {% include 'partials/card.liquid' with item, size: 'large' %}
@@ -20,82 +20,81 @@
 
     <form class="filter-chat">
         <fieldset>
-            <legend>I'm looking for a gift for...</legend>
+            <legend>Ik ben op zoek naar een cadeau voor...</legend>
             <div class="wrapper-filter">
                 <select name="person" id="person">
-                    <option value="">Who is him/her/other</option>
-                    <option value="boyfriend">Boyfriend</option>
-                    <option value="girlfriend">Girlfriend</option>
-                    <option value="wife">Wife</option>
-                    <option value="husband">Husband</option>
-                    <option value="fiance">Fiancé(e)</option>
+                    <option value="">Wie is hij/zij/anders?</option>
+                    <option value="boyfriend">Vriend</option>
+                    <option value="girlfriend">Vriendin</option>
+                    <option value="wife">Echtgenote</option>
+                    <option value="husband">Echtgenoot</option>
+                    <option value="fiance">Verloofde</option>
                     <option value="partner">Partner</option>
-                    <option value="friend">Friend</option>
-                    <option value="best_friend">Best Friend</option>
-                    <option value="sister">Sister</option>
-                    <option value="brother">Brother</option>
-                    <option value="mother">Mother</option>
-                    <option value="father">Father</option>
-                    <option value="stepmother">Stepmother</option>
-                    <option value="stepfather">Stepfather</option>
-                    <option value="grandmother">Grandmother</option>
-                    <option value="grandfather">Grandfather</option>
-                    <option value="son">Son</option>
-                    <option value="daughter">Daughter</option>
-                    <option value="step_son">Step-son</option>
-                    <option value="step_daughter">Step-daughter</option>
-                    <option value="uncle">Uncle</option>
-                    <option value="aunt">Aunt</option>
-                    <option value="cousin">Cousin</option>
-                    <option value="nephew">Nephew</option>
-                    <option value="niece">Niece</option>
-                    <option value="colleague">Colleague</option>
-                    <option value="boss">Boss</option>
-                    <option value="teacher">Teacher</option>
+                    <option value="friend">Vriend</option>
+                    <option value="best_friend">Beste vriend(in)</option>
+                    <option value="sister">Zus</option>
+                    <option value="brother">Broer</option>
+                    <option value="mother">Moeder</option>
+                    <option value="father">Vader</option>
+                    <option value="stepmother">Stiefmoeder</option>
+                    <option value="stepfather">Stiefvader</option>
+                    <option value="grandmother">Grootmoeder</option>
+                    <option value="grandfather">Grootvader</option>
+                    <option value="son">Zoon</option>
+                    <option value="daughter">Dochter</option>
+                    <option value="step_son">Stiefzoon</option>
+                    <option value="step_daughter">Stiefdochter</option>
+                    <option value="uncle">Oom</option>
+                    <option value="aunt">Tante</option>
+                    <option value="cousin">Neef/Nicht (achterneef/achternicht)</option>
+                    <option value="nephew">Neef</option>
+                    <option value="niece">Nicht</option>
+                    <option value="colleague">Collega</option>
+                    <option value="boss">Baas</option>
+                    <option value="teacher">Leraar/Lerares</option>
                     <option value="mentor">Mentor</option>
                     <option value="coach">Coach</option>
-                    <option value="neighbor">Neighbor</option>
-                    <option value="pet">Pet</option>
+                    <option value="neighbor">Buur</option>
+                    <option value="pet">Huisdier</option>
                 </select>
-                <input type="number" id="age" name="age" min="0" max="120" placeholder="age">
+                <input type="number" id="age" name="age" min="0" max="120" placeholder="leeftijd">
                 <select name="occasion" id="occasion">
-                    <option value="">For which occasion</option>
-                    <option value="birthday">Birthday</option>
-                    <option value="anniversary">Anniversary</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="engagement">Engagement</option>
-                    <option value="graduation">Graduation</option>
-                    <option value="baby_shower">Baby Shower</option>
-                    <option value="new_baby">New Baby</option>
+                    <option value="">Voor welke gelegenheid</option>
+                    <option value="birthday">Verjaardag</option>
+                    <option value="anniversary">Jubileum</option>
+                    <option value="wedding">Bruiloft</option>
+                    <option value="engagement">Verloving</option>
+                    <option value="graduation">Diploma-uitreiking</option>
+                    <option value="baby_shower">Babyshower</option>
+                    <option value="new_baby">Geboorte</option>
                     <option value="housewarming">Housewarming</option>
-                    <option value="promotion">Promotion</option>
-                    <option value="retirement">Retirement</option>
-                    <option value="valentine">Valentine's Day</option>
-                    <option value="christmas">Christmas</option>
-                    <option value="easter">Easter</option>
+                    <option value="promotion">Promotie</option>
+                    <option value="retirement">Pensioen</option>
+                    <option value="valentine">Valentijnsdag</option>
+                    <option value="christmas">Kerstmis</option>
+                    <option value="easter">Pasen</option>
                     <option value="thanksgiving">Thanksgiving</option>
                     <option value="halloween">Halloween</option>
-                    <option value="new_year">New Year's Eve</option>
-                    <option value="father_day">Father's Day</option>
-                    <option value="mother_day">Mother's Day</option>
-                    <option value="friendship_day">Friendship Day</option>
-                    <option value="get_well">Get Well Soon</option>
-                    <option value="thank_you">Thank You</option>
-                    <option value="just_because">Just Because</option>
-                    <option value="apology">Apology</option>
-                    <option value="goodbye">Goodbye/Farewell</option>
-                    <option value="welcome">Welcome Gift</option>
-                    <option value="back_to_school">Back to School</option>
-                    <option value="graduation">Graduation</option>
-                    <option value="first_day_work">First Day at Work</option>
+                    <option value="new_year">Oud en Nieuw</option>
+                    <option value="father_day">Vaderdag</option>
+                    <option value="mother_day">Moederdag</option>
+                    <option value="friendship_day">Vriendschapsdag</option>
+                    <option value="get_well">Beterschap</option>
+                    <option value="thank_you">Bedankt</option>
+                    <option value="just_because">Zomaar</option>
+                    <option value="apology">Excuses</option>
+                    <option value="goodbye">Afscheid</option>
+                    <option value="welcome">Welkomstcadeau</option>
+                    <option value="back_to_school">Terug naar school</option>
+                    <option value="first_day_work">Eerste werkdag</option>
                 </select>
             </div>
 
             <div class="wrapper-chat">
                 <div class="container-search">
-                    <label class="text-chat" for="search">I'm looking for a gift for...</label>
+                    {% comment %} <label class="text-chat" for="search">I'm looking for a gift for...</label> {% endcomment %}
                     <div class="chat-input">
-                        <input type="chat" id="chat" name="chat" />
+                        <input type="chat" id="chat" name="chat" placeholder="Ik ben op zoek naar een cadeau voor..."/>
                         <button class="to-chat-btn"><img class="search" src="/assets/search.svg" alt="search"></button>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 <main class="product">
 
-    <a class="go-back" href="/"><img class="back-img" src="/assets/back.svg" alt="back">Back</a>
+    <a class="go-back" href="/"><img class="back-img" src="/assets/back.svg" alt="back">Terug</a>
 
     <h1 class="titel-product">{{ item.name }}</h1>
     <div class="wrapper-extra-product-info">
@@ -14,7 +14,7 @@
 
     <img class="item-product-img" src="{{ item.image }}" alt="{{ item.name }}">
 
-    <button class="to-favourite-btn">Add to <img class="favourite-img" src="/assets/favourite2.svg"
+    <button class="to-favourite-btn">Toevoegen aan <img class="favourite-img" src="/assets/favourite2.svg"
             alt="favourite"></button>
 
     <div class="description">
@@ -24,13 +24,9 @@
 
         <div class="whapper-extra-info">
             <img class="why-this-gift-img" src="/assets/vierkantvraag.svg" alt="">
-            <p class="why-this-gift">WHY THIS GIFT The glue is non-toxic, so it's safe to eat or drink off repaired
-                items. To retain the gold
-                colour it is not advised to place items in the dishwasher.</p>
+            <p class="why-this-gift">WAAROM DIT CADEAU<br>{{ item.tags }}</p>
             <img class="good-to-now-img" src="/assets/hand.svg" alt="">
-            <p class="good-to-now">GOOD TO KNOW One kit can repair approximately eight normal plates as per the
-                images,
-                with 3 full cracks.
+            <p class="good-to-now">GOED OM TE WETEN <br>  De cadeaus op deze website zijn zorgvuldig geselecteerd als inspiratie. Sommige cadeaus kunnen via externe websites worden aangeschaft, terwijl andere gratis zijn. Houd rekening met de details van elk cadeau, zoals eventuele kosten, levertijden of specifieke gebruiksinstructies, om het perfecte geschenk te vinden.
             </p>
         </div>
 
@@ -41,11 +37,11 @@
         <img class="gift-status-img" src="/assets/vierkantgoed.svg" alt="">
         <p class="gift-status-trashed">doom to be trashed</p>
         <img class="gift-status-img" src="/assets/vierkantbest.svg" alt="">
-        <p class="gift-status-new">new</p>
+        <p class="gift-status-new">Nieuw</p>
 
         <div class="divider"></div>
 
-        <h2 class="product-sidebar">Where to buy</h2>
+        <h2 class="product-sidebar">Waar te kopen</h2>
 
         <article class="wrapper-shop">
             <div class="shop-info">
@@ -133,7 +129,7 @@
             </div>
         </article>
 
-        <h2 class="product-sidebar">You may also like</h2>
+        <h2 class="product-sidebar">Misschien vind je dit ook leuk</h2>
         <article class="products-detail">
             {% for item in items %}
             {% include 'partials/card.liquid' with item, size: 'small' %}
