@@ -5,6 +5,13 @@
 
     <section class="products-home">
 
+        <button class="filter-popover" popovertarget="my-popover"><img src="/assets/filter.svg" alt="">FILTER
+            PER</button>
+        <section class="filter" popover id="my-popover">
+            Pas filters aan
+    
+        </section>
+
         {% for item in items %}
         {% if forloop.index == 2 %}
         <div class="wrapper-register">
@@ -92,9 +99,10 @@
 
             <div class="wrapper-chat">
                 <div class="container-search">
-                    {% comment %} <label class="text-chat" for="search">I'm looking for a gift for...</label> {% endcomment %}
+                    {% comment %} <label class="text-chat" for="search">I'm looking for a gift for...</label> {%
+                    endcomment %}
                     <div class="chat-input">
-                        <input type="chat" id="chat" name="chat" placeholder="Ik ben op zoek naar een cadeau voor..."/>
+                        <input type="chat" id="chat" name="chat" placeholder="Ik ben op zoek naar een cadeau voor..." />
                         <button class="to-chat-btn"><img class="search" src="/assets/search.svg" alt="search"></button>
                     </div>
                 </div>
