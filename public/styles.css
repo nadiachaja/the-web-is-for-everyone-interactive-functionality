@@ -616,6 +616,12 @@ input::placeholder {
     height: auto; 
 
     grid-area:image;
+
+    @media screen and (min-width:1000px){
+        width: unset;
+        display: flex;
+        justify-self: center;
+    }
 }
 
 .to-favourite-btn{
@@ -643,6 +649,10 @@ input::placeholder {
     border-bottom: 2px solid var(--bg-filters-not-choose);
     margin: 20px 0;
     margin-bottom: 2em;
+
+    @media screen and (min-width:1000px){
+        display: none;
+    }
 }
 
 .description{
@@ -653,6 +663,18 @@ input::placeholder {
     font-weight: var(--font-weight-normal);
 
     grid-area:info;
+
+    @media screen and (min-width:1000px){
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: 1fr max-content 1fr max-content 1fr;
+        grid-template-areas: 
+        "smile detail"
+        "buy    ."
+        "map shop"
+        "also   ."
+        "cadeau cadeau";
+    }
 }
 
 .product-description{
@@ -665,7 +687,16 @@ input::placeholder {
 
     @media screen and (min-width:700px){
         font-size: var(--ml-paragraph);
+        padding-bottom: unset;
     }
+}
+
+.whapper-extra-info{
+    grid-area: detail;
+    /* background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-l); */
+    padding: 1em;
+    margin-left: .5em;
 }
 
 .why-this-gift-img{
@@ -712,6 +743,15 @@ input::placeholder {
     @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
+}
+
+.gift-status-wrapper{
+    grid-area: smile;
+    align-self: center;
+    /* background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-l); */
+    padding: 1em;
+    margin-right: .5em;
 }
 
 .smiles-img{
@@ -765,6 +805,21 @@ input::placeholder {
     }
 }
 
+.map{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    margin: 1em;
+    border-radius: var(--border-radius-m);
+    grid-area: map;
+
+    @media screen and (min-width:1000px){
+        height: 350px;
+        width: 400px;
+        align-self: unset;
+    }
+}
+
 .shop-info{
     background-color: var(--bg-secondary);
     width: 15em;
@@ -772,8 +827,6 @@ input::placeholder {
     margin: 1em;
     box-shadow: var(--box-shadow-l);
 }
-
-
 
 .to-the-shop{
     color: var(--text-general);
@@ -824,12 +877,23 @@ input::placeholder {
     bottom: 2em;
 }
 
-.product-sidebar{
+.product-sidebar-buy{
     font-size: var(--l-detail-heading);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-general);
     margin-left: 1em;
     margin-top: 1em;
+    padding-top: 2em;
+    grid-area: buy;
+}
+
+.product-sidebar-also{
+    font-size: var(--l-detail-heading);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-general);
+    margin-left: 1em;
+    margin-top: 1em;
+    grid-area: also;
 }
 
 .products-detail{
@@ -839,6 +903,7 @@ input::placeholder {
 
     @media screen and (min-width:550px){
         width: unset;
+        grid-area: cadeau;
     }
 }
 
@@ -850,6 +915,7 @@ input::placeholder {
 
     @media screen and (min-width:550px){
         width: unset;
+        grid-area: shop;
     }
 
 }

@@ -33,18 +33,21 @@
 
         <div class="divider"></div>
 
-    
+    <div class="gift-status-wrapper">
         <img class="smiles-img" src="/assets/smile.svg" alt="">
         <p class="smiley-text">wooow surprise factor</p>
         <img class="gift-status-img" src="/assets/vierkantgoed.svg" alt="">
         <p class="gift-status-trashed">doom to be trashed</p>
         <img class="gift-status-img" src="/assets/vierkantbest.svg" alt="">
         <p class="gift-status-new">Nieuw</p>
+        </div>
     
         <div class="divider"></div>
 
-        <h2 class="product-sidebar">Waar te kopen</h2>
+        <h2 class="product-sidebar-buy">Waar te kopen</h2>
 
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4873.239243506629!2d4.905406476117385!3d52.35918384812419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6099a6912b383%3A0x2222cf2de2b26486!2sHvA%20TTH!5e0!3m2!1snl!2snl!4v1742391434456!5m2!1snl!2snl" width="300" height="200" style="border:4px solid white;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      
         <article class="wrapper-shop">
             <div class="shop-info">
                 <a class="to-the-shop" href="{{ item.shop_url }}">
@@ -131,7 +134,7 @@
             </div>
         </article>
 
-        <h2 class="product-sidebar">Misschien vind je dit ook leuk</h2>
+        <h2 class="product-sidebar-also">Misschien vind je dit ook leuk</h2>
         <article class="products-detail">
             {% for item in items %}
             {% include 'partials/card.liquid' with item, size: 'small' %}
