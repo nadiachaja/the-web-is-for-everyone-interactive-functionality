@@ -87,7 +87,7 @@ header {
     border: 1px solid var(--bg-filters-not-choose);
     box-shadow: var(--box-shadow-s);
 
-    @media screen and (min-width:650px) {
+    @media screen and (min-width:650px){
         border-radius: var(--border-radius-l);
         text-decoration: none;
         gap: 1em;
@@ -102,7 +102,7 @@ header {
 .create-list {
     display: none;
 
-    @media screen and (min-width:650px) {
+    @media screen and (min-width:650px){
         display: block;
         color: var(--text-general);
         font-size: var(--m-paragraph);
@@ -156,9 +156,9 @@ section.products-home {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: max-content 1fr;
-        grid-template-areas:
-            "filter filter filter"
-            "cards cards cards";
+        grid-template-areas: 
+        "filter filter filter"
+        "cards cards cards";
     }
 
     @media screen and (min-width:1280px) {
@@ -179,7 +179,7 @@ section.wrapper-spotters-join {
 
 /*FILTER HOMEPAGINA*/
 
-.filter-popover {
+.filter-popover{
     grid-area: filter;
     width: 10em;
     border: none;
@@ -189,16 +189,15 @@ section.wrapper-spotters-join {
     font-size: var(--xs-paragraph);
 }
 
-.filter {
-    width: 15em;
-    height: 25em;
-    border: none;
-    border-radius: var(--border-radius-m);
+.filter{
+width: 15em;
+height: 25em;
+border: none;
+border-radius: var(--border-radius-m);
 }
 
 fieldset {
     border: none;
-
     @media screen and (min-width:550px) {
         height: 100vh;
         display: flex;
@@ -214,7 +213,7 @@ legend {
     margin: .5em;
     font-size: var(--xs-heading);
     font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-xxl);
+    line-height: var(--line-height-xxl) ;
     padding-top: 3em;
 
     @media screen and (min-width: 550px) {
@@ -364,7 +363,7 @@ input::placeholder {
     top: 50%;
     transform: translateY(-50%);
     right: .7em;
-
+    
     display: flex;
     justify-self: end;
 
@@ -382,7 +381,7 @@ input::placeholder {
 } */
 
 
-.container-search {
+.container-search{
     margin-bottom: 2em;
 }
 
@@ -397,8 +396,8 @@ input::placeholder {
 }
 
 .card.size-small {
-
-    .save-favourite-btn {
+    
+    .save-favourite-btn{
         translate: -1.7em -15.2em;
     }
 }
@@ -411,13 +410,13 @@ input::placeholder {
     width: 2em;
 }
 
-.product-saved {
+.product-saved{
     font-size: var(--xs-paragraph);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-general);
 }
 
-.product-gived {
+.product-gived{
     font-size: var(--xs-paragraph);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-general);
@@ -537,26 +536,27 @@ input::placeholder {
 
 /*DETAILPAGINA*/
 
-.product {
-    max-width: 100%;
-    width: 100vw;
-    min-height: 100vh;
-    overflow: hidden;
+.product{
+    max-width: 100%; 
+    width: 100vw; 
+    min-height: 100vh; 
+    overflow: hidden; 
 
-    @media screen and (min-width:1000px) {
-        display: grid;
+    @media screen and (min-width:1000px){
+        display:grid;
         grid-template-columns: 50% 1fr max-content;
-        grid-template-rows: max-content max-content max-content 1fr;
-        grid-template-areas:
+        grid-template-rows:  max-content max-content max-content 1fr;
+        grid-template-areas: 
             "back  .     ."
             "image titel knop"
-            "image extra  extra"
-            "image info  info";
+            "image desc  knop"
+            "image extra extra"
+            "info  info  info";
 
     }
 }
 
-.go-back {
+.go-back{
     display: flex;
     align-items: center;
     gap: .5em;
@@ -565,59 +565,60 @@ input::placeholder {
     text-decoration: none;
     font-size: var(--xs-paragraph);
 
-    grid-area: back;
+    grid-area:back;
 }
 
-.titel-product {
+.titel-product{
     font-size: var(--xxs-heading);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-s);
     margin-left: 1em;
 
-    @media screen and (min-width:700px) {
-        font-size: var(--xs-heading);
+    @media screen and (min-width:700px){
+        font-size: var( --xs-heading);
     }
 
     grid-area:titel;
 }
 
-.wrapper-extra-product-info {
+.wrapper-extra-product-info{
     display: flex;
     gap: .5em;
     margin: 1em;
     width: 100%;
 
-    grid-area: extra;
+    grid-area:extra;
+    align-self:start;
 }
 
-.spotters-item-img {
+.spotters-item-img{
     width: 4em;
 }
 
-.item-cadeau-img {
+.item-cadeau-img{
     width: 2.5em;
 }
 
-.item-saved {
+.item-saved{
     display: flex;
     align-items: center;
     font-size: var(--xs-paragraph);
 }
 
-.item-gived {
+.item-gived{
     display: flex;
     align-items: center;
     font-size: var(--xs-paragraph);
 }
 
-.item-product-img {
+.item-product-img{
     width: 100%;
-    height: auto;
+    height: auto; 
 
-    grid-area: image;
+    grid-area:image;
 }
 
-.to-favourite-btn {
+.to-favourite-btn{
     background-color: var(--bg-button);
     color: var(--bg-secondary);
     font-size: var(--xs-paragraph);
@@ -631,10 +632,11 @@ input::placeholder {
     padding: .8em;
     margin: 1em;
     margin-right: 2em;
-    border: none;
+    border:none;
     box-shadow: var(--box-shadow-s);
 
-    grid-area: knop;
+    grid-area:knop;
+    align-self: start;
 }
 
 .divider {
@@ -643,81 +645,82 @@ input::placeholder {
     margin-bottom: 2em;
 }
 
-.description {
+.description{
     background-color: var(--bg-tertiary);
     padding: 1em;
     font-size: var(--s-paragraph);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    grid-area: info;
+    grid-area:info;
 }
 
-.product-description {
+.product-description{
     margin: 1em;
     padding-bottom: 1em;
     font-size: var(--s-paragraph);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
+    grid-area: desc;
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--ml-paragraph);
     }
 }
 
-.why-this-gift-img {
+.why-this-gift-img{
     display: flex;
     justify-self: center;
     width: 2.5em;
 }
 
-.why-this-gift {
+.why-this-gift{
     margin: 1em;
     padding-bottom: 2em;
     font-size: var(--xs-paragraph);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    @media screen and (min-width:550px) {
+    @media screen and (min-width:550px){
         display: flex;
         text-align: center;
     }
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
 }
 
-.good-to-now-img {
+.good-to-now-img{
     display: flex;
     justify-self: center;
     width: 2.5em;
 }
 
-.good-to-now {
+.good-to-now{
     margin: 1em;
     padding-bottom: 2em;
     font-size: var(--xs-paragraph);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    @media screen and (min-width:550px) {
+    @media screen and (min-width:550px){
         display: flex;
         text-align: center;
     }
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
 }
 
-.smiles-img {
+.smiles-img{
     display: flex;
     justify-self: center;
     margin: .5em;
 }
 
-.smiley-text {
+.smiley-text{
     display: flex;
     justify-self: center;
     padding-bottom: 1em;
@@ -725,18 +728,18 @@ input::placeholder {
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
 }
 
-.gift-status-img {
+.gift-status-img{
     display: flex;
     justify-self: center;
     margin: .5em;
 }
 
-.gift-status-trashed {
+.gift-status-trashed{
     display: flex;
     justify-self: center;
     padding-bottom: 1em;
@@ -744,12 +747,12 @@ input::placeholder {
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
 }
 
-.gift-status-new {
+.gift-status-new{
     display: flex;
     justify-self: center;
     padding-bottom: 1em;
@@ -757,12 +760,12 @@ input::placeholder {
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         font-size: var(--s-paragraph);
     }
 }
 
-.shop-info {
+.shop-info{
     background-color: var(--bg-secondary);
     width: 15em;
     height: 20em;
@@ -772,12 +775,12 @@ input::placeholder {
 
 
 
-.to-the-shop {
+.to-the-shop{
     color: var(--text-general);
     text-decoration: none;
 }
 
-.shopping-card-btn {
+.shopping-card-btn{
     display: flex;
     justify-self: center;
     position: relative;
@@ -788,11 +791,11 @@ input::placeholder {
     height: 5em;
 }
 
-.shopping-card {
+.shopping-card{
     margin: .5em;
 }
 
-.shop-name {
+.shop-name{
     display: flex;
     justify-content: center;
     text-align: center;
@@ -803,7 +806,7 @@ input::placeholder {
     font-weight: var(--font-weight-medium);
 }
 
-.price {
+.price{
     display: flex;
     justify-content: center;
     position: relative;
@@ -813,7 +816,7 @@ input::placeholder {
     font-weight: var(--font-weight-bold);
 }
 
-.wrapper-company {
+.wrapper-company{
     display: flex;
     justify-content: center;
     gap: 1em;
@@ -821,7 +824,7 @@ input::placeholder {
     bottom: 2em;
 }
 
-.product-sidebar {
+.product-sidebar{
     font-size: var(--l-detail-heading);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-general);
@@ -829,23 +832,23 @@ input::placeholder {
     margin-top: 1em;
 }
 
-.products-detail {
+.products-detail{
     width: 350px;
     overflow-x: scroll;
     display: flex;
 
-    @media screen and (min-width:550px) {
+    @media screen and (min-width:550px){
         width: unset;
     }
 }
 
-.wrapper-shop {
+.wrapper-shop{
     width: 350px;
     overflow-x: scroll;
     display: flex;
     padding-bottom: 2em;
 
-    @media screen and (min-width:550px) {
+    @media screen and (min-width:550px){
         width: unset;
     }
 
@@ -854,38 +857,41 @@ input::placeholder {
 
 /*404*/
 
-.cadeau-img-404 {
+.cadeau-img-404{
     width: 25em;
     display: flex;
     justify-self: center;
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:700px){
         width: 35em;
     }
 
-    @media screen and (min-width:1000px) {
+    @media screen and (min-width:1000px){
         width: 30em;
     }
 
-    @media screen and (min-width:1280px) {
+    @media screen and (min-width:1280px){
         width: 25em;
     }
 
 }
 
-.text-404 {
+.text-404{
     display: flex;
     justify-content: center;
     font-size: var(--m-heading);
 
-    @media screen and (min-width:700px) {
-        font-size: var(--l-heading);
-        ;
+    @media screen and (min-width:700px){
+        font-size: var(--l-heading);;
     }
 }
 
-.text-page {
+.text-page{
     display: flex;
     justify-content: center;
     font-size: var(--xl-paragraph);
 }
+
+
+
+

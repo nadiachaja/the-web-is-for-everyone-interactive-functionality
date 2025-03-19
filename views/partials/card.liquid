@@ -11,7 +11,7 @@
 <article class="card size-{{ size }}">
     <div class="wrapper-img">
         <img class="product-img" src="{{ item.image }}" width="150" height="130" alt="{{ item.name }}">
-        <form action="/gifts/{{ item.id }}/" method="post">
+        <form action="/{{ item.id }}" method="post">
             <button type="submit" class="save-favourite-btn"><img class="image-to-favourite" src="/assets/tofavourite.svg"
                     alt="to favourite"></button>
         </form>

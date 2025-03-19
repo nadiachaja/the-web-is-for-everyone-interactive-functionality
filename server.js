@@ -72,31 +72,36 @@ app.get('/favourite', async function (request, response) {
 
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
-app.post('/gifts/:id', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  const giftId = request.params.id
 
-  const currentGifts = likesResponseJSON.data.saved_products
-  console.log(currentGifts)
-  currentGifts.push(giftId)
-  const giftExists = currentGifts.includes(giftId);
 
-const patchResponse = await fetch( likesBaseUrl, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+app.post('/:itemId', async function (request, response) {
+ 
+  await fetch('https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products', {
+    method: 'POST',
     body: JSON.stringify({
-      data: {
-        saved_products: currentGifts,
-      }
+        milledoni_products_id: request.params.itemId,
+        milledoni_users_id: 1
     }),
-  })
-  console.log(patchResponse)
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+    }
+});
+ 
+  response.redirect(303, '/');
+});
 
-  // Er is nog geen afhandeling van POST, redirect naar GET op /
-  response.redirect(303, '/')
-})
+// const savedProductsURL = 'https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products';
+
+// const idRes = await fetch(`${savedProductsURL}?filter={"milledoni_products_id":${request.params.itemId},"milledoni_users_id":1}`);
+// const idJson = await idRes.json();
+// const id = idJson.data[0].id;
+
+// await fetch(`${savedProductsURL}/${id}`, {
+//   method: 'DELETE',
+//   headers: {
+//     'Content-Type': 'application/json;charset=UTF-8'
+//   }
+// });
 
 
 
