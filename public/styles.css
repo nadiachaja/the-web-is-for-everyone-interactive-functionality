@@ -9,7 +9,7 @@ body {
 }
 
 
-/*HEAD*/
+/*MARK: HEAD*/
 
 header {
     display: flex;
@@ -23,7 +23,6 @@ header {
     @media screen and (min-width:1000px) {
         display: flex;
         align-items: center;
-
     }
 }
 
@@ -124,7 +123,7 @@ header {
 }
 
 
-/*VOLGORDE HTML HOMEPAGINA*/
+/*MARK: VOLGORDE HTML HOMEPAGINA*/
 
 main.general {
     display: flex;
@@ -173,7 +172,7 @@ section.wrapper-spotters-join {
 
 
 
-/*FILTER HOMEPAGINA*/
+/*MARK: FILTER HOMEPAGINA*/
 
 .filter-popover{
     grid-area: filter;
@@ -286,7 +285,7 @@ legend {
 
 
 
-/*CHAT*/
+/*MARK:CHAT*/
 
 .wrapper-chat {
     background-color: var(--bg-secondary);
@@ -381,7 +380,7 @@ input::placeholder {
     margin-bottom: 2em;
 }
 
-/*CARDS*/
+/*MARK: CARDS*/
 
 .card {
     background-color: var(--bg-secondary);
@@ -478,7 +477,7 @@ input::placeholder {
 }
 
 
-/*REGISTER OR LOG IN*/
+/*MARK: REGISTER OR LOG IN*/
 
 .wrapper-register {
     background-color: var(--bg-register);
@@ -530,7 +529,7 @@ input::placeholder {
 
 
 
-/*DETAILPAGINA*/
+/*MARK: DETAILPAGINA*/
 
 .product{
     max-width: 100%; 
@@ -917,7 +916,7 @@ input::placeholder {
 }
 
 
-/*404*/
+/* MARK:404*/
 
 .cadeau-img-404{
     width: 25em;
@@ -956,5 +955,5 @@ input::placeholder {
 
 
 
-/*FAVORIETEN PAGINA*/
+/*MARK: FAVORIETEN PAGINA*/
 

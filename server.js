@@ -40,7 +40,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.get('/', async function (request, response) {
   // Geef hier eventueel data aan mee
-  response.render('index.liquid', { items: apiResponseJSON.data })
+  response.render('index.liquid', { items: apiResponseJSON.data})
 })
 
 app.get('/cadeau/:slug', async function (request, response) {
@@ -88,7 +88,11 @@ app.get('/favourite', async function (request, response) {
 
 app.post('/:itemId', async function (request, response) {
  
+  
   await fetch('https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products', {
+    //if cadeau id == id delete
+
+    //else
     method: 'POST',
     body: JSON.stringify({
         milledoni_products_id: request.params.itemId,
@@ -97,6 +101,7 @@ app.post('/:itemId', async function (request, response) {
     headers: {
         'Content-Type': 'application/json; charset=UTF-8'
     }
+
 });
  
   response.redirect(303, '/');
