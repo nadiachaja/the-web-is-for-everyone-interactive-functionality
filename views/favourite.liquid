@@ -1,46 +1,56 @@
-{% render 'partials/head.liquid', title: 'Home' %}
+{% render 'partials/head.liquid', title: 'Favorieten cadeaus ' %}
 
 <nav>
-    <a class="go-back" href="/"><img class="back-img" src="/assets/back.svg" alt="back">Terug</a>
+    <a class="go-back" href="/">
+        <img class="back-img" src="/assets/back.svg" alt="back">Terug
+    </a>
 
-    <div>
-    <button><img src="/assets/plusje.svg" alt="plusje"></button>
-    <p>Nieuwe lijst</p>
-    </div>
+    <ul class="users">
+        <li class="">
+            <button><img src="/assets/plusje.svg" alt="plusje"></button>
+            <p>Nieuwe lijst</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/hart.svg" alt="hartje"></button>
-    <p>Wenslijst</p>
-    </div>
+        <li>
+            <button><img src="/assets/hart.svg" alt="hartje"></button>
+            <p>Wenslijst</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/riley.svg" alt=""></button>
-    <p>Riley</p>
-    </div>
+        <li>
+            <button><img src="/assets/riley.svg" alt=""></button>
+            <p>Riley</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/tom.svg" alt=""></button>
-    <p>Tom</p>
-    </div>
+        <li>
+            <button><img src="/assets/tom.svg" alt=""></button>
+            <p>Tom</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/mia.svg" alt=""></button>
-    <p>Mia</p>
-    </div>
+        <li>
+            <button><img src="/assets/mia.svg" alt=""></button>
+            <p>Mia</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/ben.svg" alt=""></button>
-    <p>Ben</p>
-    </div>
+        <li>
+            <button><img src="/assets/ben.svg" alt=""></button>
+            <p>Ben</p>
+        </li>
 
-    <div>
-    <button><img src="/assets/lily.svg" alt=""></button>
-    <p>Lily</p>
-    </div>
+        <li>
+            <button><img src="/assets/lily.svg" alt=""></button>
+            <p>Lily</p>
+        </li>
+    </ul>
 </nav>
 
-<main>
 
+<main>
+    <ul>
+        {% for product in favourites %}
+          {% include 'partials/card.liquid' with item, size: 'medium', item: product %}
+        {% endfor %}
+      </ul>
 </main>
+ 
 
 {% render 'partials/footer.liquid' %}

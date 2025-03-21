@@ -57,16 +57,28 @@ app.get('/cadeau/:slug', async function (request, response) {
 })
 
 app.get('/favourite', async function (request, response) {
-  const apiResponseFavourite = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products`)
+  // Fetch user data with saved products
+  const favouriteResponse = await fetch(`https://fdnd-agency.directus.app/items/milledoni_users/?fields=*.*&filter[id][_eq]=1`);
+  const favouriteResponseJSON = await favouriteResponse.json();
+ 
+  // Extract saved product IDs
+  const savedProducts = favouriteResponseJSON.data[0].saved_products;
+  const productIds = [...new Set(savedProducts.map(item => item.milledoni_products_id))]; // Remove duplicates
+ 
+  // Fetch product details for each product ID
+  const products = await Promise.all(productIds.map(async (productId) => {
+      const productResponse = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products/${productId}`);
+      const productData = await productResponse.json();
+      return productData.data;
+  }));
+ 
+  // Render the template with fetched product details
+  response.render("favourite.liquid", {
+      favourites: products
+  });
+});
 
-  const apiResponseFavouriteJSON = await apiResponseFavourite.json()
-  
-  if(apiResponseFavouriteJSON.data[0]){
-    response.render('favourite.liquid', { item: apiResponseFavouriteJSON.data[0], items: apiResponseJSON.data})
-  } else {
-    response.render('404.liquid');
-  }
-})
+
 
 
 
