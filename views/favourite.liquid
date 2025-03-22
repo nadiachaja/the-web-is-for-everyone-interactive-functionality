@@ -16,28 +16,29 @@
             <p>Wenslijst</p>
         </li>
 
-        <li>
-            <button><img src="/assets/riley.svg" alt=""></button>
-            <p>Riley</p>
+        <li class="selected">
+            <button><img src="/assets/riley.svg" alt="afbeedling Riley"></button> 
+            <button><img src="/assets/tekenpen.svg" alt=""></button>
+            <h1>Riley</h1>
         </li>
 
         <li>
-            <button><img src="/assets/tom.svg" alt=""></button>
+            <button><img src="/assets/tom.svg" alt="afbeedling Tom"></button>
             <p>Tom</p>
         </li>
 
         <li>
-            <button><img src="/assets/mia.svg" alt=""></button>
+            <button><img src="/assets/mia.svg" alt="afbeedling Mia"></button>
             <p>Mia</p>
         </li>
 
         <li>
-            <button><img src="/assets/ben.svg" alt=""></button>
+            <button><img src="/assets/ben.svg" alt="afbeedling Ben"></button>
             <p>Ben</p>
         </li>
 
         <li>
-            <button><img src="/assets/lily.svg" alt=""></button>
+            <button><img src="/assets/lily.svg" alt="afbeedling Lily"></button>
             <p>Lily</p>
         </li>
     </ul>
@@ -45,12 +46,43 @@
 
 
 <main>
+    
+   <img src="/assets/klokterug.svg" alt=""><h2>Recente zoekopdrachten voor Riley</h2>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Ik zoek een afstudeercadeau voor Riley, die net is afgestudeerd en nu klaar is om de volgende stap in het leven te zetten. Wat zijn leuke en betekenisvolle cadeaus om deze prestatie te vieren</a>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Ik ben op zoek naar een origineel en persoonlijk verjaardagscadeau voor Riley, die een passie heeft voor [hobby of interesse, bijvoorbeeld kunst, technologie of reizen]. Wat zijn leuke en unieke cadeau-ideeën die passen bij zijn/haar interesses</a>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Ik zoek een kerstcadeau voor Riley, iemand die van [specifieke interesse, zoals koken, films of sport] houdt. Wat zijn leuke en praktische cadeau-ideeën die perfect zijn voor de feestdagen?</a>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Ik ben op zoek naar een cadeau voor Riley, die gepassioneerd is over reizen. Wat zijn handige en innovatieve cadeau-ideeën die hem/haar kunnen helpen bij het verkennen van nieuwe plekken</a>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Riley heeft onlangs een nieuwe baan, en ik wil graag een praktisch cadeau vinden dat hem/haar kan helpen bij deze nieuwe fase in het leven. Wat zijn handige en stijlvolle cadeaus voor iemand die net een carrièrestap heeft gemaakt</a>
+
+   <a href=""><img src="/assets/streepjes.svg" alt="">Riley is echt geïnteresseerd in technologie, en ik zoek een cadeau dat past bij zijn/haar liefde voor gadgets en innovatie. Wat zijn de nieuwste en coolste technologie-cadeaus die ik voor Riley kan kopen</a>
+
+
+   <h2>Nog steeds niet het perfecte cadeau gevonden?</h2>
+   <a href="/"><img src="../public/assets/search.svg" alt="">Ga verder met zoeken voor Riley </a>
+
+
+
+
+
+
     <ul>
         {% for product in favourites %}
-          {% include 'partials/card.liquid' with item, size: 'medium', item: product %}
+        {% include 'partials/card.liquid' with item, size: 'medium', item: product %}
         {% endfor %}
-      </ul>
+    </ul>
+
+
+    <article class="more-products">
+        {% for item in items %}
+        {% include 'partials/card.liquid' with item, size: 'xl' %}
+        {% endfor %}
+    </article>
 </main>
- 
+
 
 {% render 'partials/footer.liquid' %}
