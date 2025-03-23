@@ -12,17 +12,21 @@
     <div class="wrapper-img">
         <img class="product-img" src="{{ item.image }}" width="150" height="130" alt="{{ item.name }}">
 
-        if al gefavourite..
 
-        Een form met unfavorite
-
-        else 
-
-
+       
+        {% if  %}
         <form action="/{{ item.id }}" method="post">
-            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite" src="/assets/tofavourite.svg"
-                    alt="to favourite"></button>
+            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite"
+                    src="/assets/favourites.svg.svg" alt="to favourite"></button>
         </form>
+
+        {% else %}
+        <form action="/{{ item.id }}" method="post">
+            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite"
+                    src="/assets/tofavourite.svg" alt="to favourite"></button>
+        </form>
+        {% endif %}
+
     </div>
     <h3 class="product-name"><a class="slug" href="/cadeau/{{ item.slug }}">{{ item.name }}</a></h3>
     <div class="whapper-spotter-gived-info">
