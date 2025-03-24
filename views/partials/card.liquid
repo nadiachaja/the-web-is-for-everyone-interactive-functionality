@@ -36,7 +36,9 @@
 
 
     </div>
-    <h3 class="product-name"><a class="slug" href="/cadeau/{{ item.slug }}">{{ item.name }}</a></h3>
+    <h3 class="product-name">
+        <a class="slug" href="/cadeau/{{ item.slug | url_encode }}">{{ item.name }}</a>
+        </h3>
     <div class="whapper-spotter-gived-info">
         <div class="spotter-info">
             <img class="saved-spotters-img" src="/assets/persoons.svg" alt="spotters">
