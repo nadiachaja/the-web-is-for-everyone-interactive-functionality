@@ -83,6 +83,18 @@
         </section>
     </div>
 
+    <div>
+        <span>Vriend</span>
+        <span>Kookliefhebber</span>
+        <span>Dromer</span>
+        <span>Spelliefhebber</span>
+    </div>
+
+    <div class="private-list">
+        <p>Questa lista è privata</p>
+        <button class="share-button">🔗</button>
+    </div>
+
     <ul>
         {% for product in favourites %}
         {% include 'partials/card.liquid' with item, size: 'medium', item: product %}
