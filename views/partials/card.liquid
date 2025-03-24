@@ -8,13 +8,33 @@
 </a> {% endcomment %}
 
 
-<article class="card size-{{ size }}">
+<article class="card size-{{ size }}" id="{{ item.id }}">
     <div class="wrapper-img">
         <img class="product-img" src="{{ item.image }}" width="150" height="130" alt="{{ item.name }}">
+
         <form action="/{{ item.id }}" method="post">
-            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite" src="/assets/tofavourite.svg"
-                    alt="to favourite"></button>
+            {% if item.is_saved %}
+                <button type="submit" class="save-favourite-btn is-saved">
+            {% else %}
+                <button type="submit" class="save-favourite-btn">
+            {%endif%}
+                    {% comment %} Zo kan je svgs inladen: {% endcomment %}
+                    <span class="saved">
+                        {% render 'svgs/favourites.svg' %}
+                    </span>
+                    <span class="not-saved">
+                        {% render 'svgs/to-favourite.svg' %}
+                    </span>
+                </button>
         </form>
+        {% comment %} {% else %}
+        <form action="/{{ item.id }}" method="post">
+            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite"
+                    src="/assets/tofavourite.svg" alt="to favourite"></button>
+        </form>
+        {% endif %} {% endcomment %}
+
+
     </div>
     <h3 class="product-name"><a class="slug" href="/cadeau/{{ item.slug }}">{{ item.name }}</a></h3>
     <div class="whapper-spotter-gived-info">

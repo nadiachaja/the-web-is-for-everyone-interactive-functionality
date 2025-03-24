@@ -11,9 +11,7 @@ import { Liquid } from 'liquidjs';
 
 
 // API endpoints:
-const likesBaseUrl = 'https://fdnd-agency.directus.app/items/milledoni_users/1'
-const likesResponse = await fetch(likesBaseUrl)
-const likesResponseJSON = await likesResponse.json()
+const likesBaseUrl = 'https://fdnd-agency.directus.app/items/milledoni_users/1?fields=*.*'
 
 const apiResponse = await fetch('https://fdnd-agency.directus.app/items/milledoni_products')
 const apiResponseJSON = await apiResponse.json()
@@ -40,8 +38,41 @@ app.use(express.urlencoded({extended: true}))
 
 app.get('/', async function (request, response) {
   // Geef hier eventueel data aan mee
-  response.render('index.liquid', { items: apiResponseJSON.data})
+  const likesResponse = await fetch(likesBaseUrl)
+  const likesResponseJSON = await likesResponse.json()
+  const savedGifts = likesResponseJSON.data.saved_products; // array met gift-ids
+
+
+  const allProducts = apiResponseJSON.data;
+  
+  const items = checkSavedGifts(allProducts, savedGifts)
+
+  // console.log(items);
+  response.render('index.liquid', { items: items})
 })
+
+function checkSavedGifts(allProducts, savedGifts) {
+  // Deze functie geeft alle producten terug maar voegt een property toe 'is_saved'
+  // waarmee je kan checken of een product gesaved is of niet.
+  
+  // We maken een simpele array van savedGifts; a la [20, 32] etc.
+  const simpleSavedGifts = savedGifts.map(gift => {
+    return gift.milledoni_products_id
+  })
+  // Voor alle cadeaus willen we checken of het id bestaat in de savedGifts 
+  // array onder de property milledoni_products_id.
+  // We voegen aan elk product de property is_saved toe, en op basis van de bovenstaande
+  // condition is die true of false.
+  const newArray = allProducts.map(product => {
+    
+    product.is_saved = simpleSavedGifts.includes(product.id)
+    return product
+  });
+  return newArray
+}
+
+
+
 
 app.get('/cadeau/:slug', async function (request, response) {
   const slug = request.params.slug;
@@ -69,6 +100,7 @@ app.get('/favourite', async function (request, response) {
   const products = await Promise.all(productIds.map(async (productId) => {
       const productResponse = await fetch(`https://fdnd-agency.directus.app/items/milledoni_products/${productId}`);
       const productData = await productResponse.json();
+      productData.data.is_saved = true
       return productData.data;
   }));
  
@@ -79,6 +111,21 @@ app.get('/favourite', async function (request, response) {
 });
 
 
+//  zo zou ik ook cadeaus kunnen ophalen op basis van of ze gesaved zijn of niet.
+function returnSavedGifts(allProducts, savedGifts) {
+  // deze functie geeft alleen de cadeaus terug die gesaved zijn
+  const simpleSavedGifts = savedGifts.map(gift => {
+    return gift.milledoni_products_id
+  })
+  const newSavedGifts = allProducts.filter(product => {
+    
+    if (simpleSavedGifts.includes(product.id)) {
+      return product
+    }
+  });
+  return newSavedGifts
+}
+
 
 
 
@@ -87,15 +134,15 @@ app.get('/favourite', async function (request, response) {
 
 
 app.post('/:itemId', async function (request, response) {
+  const itemId = request.params.itemId;
  
   
   await fetch('https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products', {
     //if cadeau id == id delete
-
     //else
     method: 'POST',
     body: JSON.stringify({
-        milledoni_products_id: request.params.itemId,
+        milledoni_products_id: itemId,
         milledoni_users_id: 1
     }),
     headers: {
@@ -104,7 +151,7 @@ app.post('/:itemId', async function (request, response) {
 
 });
  
-  response.redirect(303, '/');
+  response.redirect(303, '/#' + itemId);
 });
 
 // const savedProductsURL = 'https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products';

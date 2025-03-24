@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-general);
+    scroll-behavior: smooth;
 }
 
 
@@ -388,6 +393,7 @@ input::placeholder {
     height: 20em;
     width: 15em;
     box-shadow: var(--box-shadow-l);
+    scroll-margin-top: 150px;
 }
 
 .card.size-small {
@@ -454,14 +460,25 @@ input::placeholder {
     background-color: var(--bg-secondary);
     width: 4em;
     height: 4em;
+    &.is-saved {
+        .saved {
+            display: block;
+        }   
+        .not-saved {
+            display: none;
+        }
+    }
+    .saved {
+        display: none;
+    }
+    svg {
+        height: 2.5em;
+        position: absolute;
+        left: .6em;
+        top: .6em;
+    }
 }
 
-.image-to-favourite {
-    height: 2.5em;
-    position: absolute;
-    left: .9em;
-    top: .7em;
-}
 
 .slug {
     display: flex;
