@@ -974,3 +974,90 @@ input::placeholder {
 
 /*MARK: FAVORIETEN PAGINA*/
 
+.users{
+    display: flex;
+    overflow-x: scroll;
+    gap: 1.5em;
+    margin: 1em;
+}
+
+li{
+    list-style-type: none;
+}
+
+.person-1-btn , .person-2-btn , .person-3-btn , .person-4-btn, .person-5-btn {
+    background-color: transparent;
+    border: none;
+}
+
+h1.person-1-name , p.person-2-name , p.person-3-name , p.person-4-name , p.person-5-name , p.new-list-text , p.wishlist-text {
+    text-align: center;
+}
+
+.person-1-btn{
+    grid-area: 1 / 1;
+}
+
+.person-1-img{
+    width: 8em;
+    grid-area: 1 / 1;
+}
+
+.person-2-img{
+    width: 6em;
+} 
+
+.person-3-img{
+    width: 6em;
+} 
+
+.person-4-img{
+    width: 6em;
+} 
+
+.person-5-img{
+    width: 6em;
+}
+
+.new-list-btn{
+    width: 6em;
+    height: 6em;
+    border-radius: var(--border-radius-xxxl);
+    border: 1px solid var(--bg-register);
+    background-color: transparent;
+}
+
+.new-list-img{
+    width: 3em;
+}
+
+.wishlist-btn{
+    width: 6em;
+    height: 6em;
+    border-radius: var(--border-radius-xxxl);
+    border: 1px solid var(--bg-register);
+    background-color: transparent;
+}
+
+.wishlist-img{
+    width: 3em;
+}
+
+.selected{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.draw-btn{
+    grid-area: 1 / 1;
+    justify-self: end;
+    align-self: end;
+    width: 3em;
+    height: 3em;
+    border: 1px solid var(--bg-register);
+    border-radius: var(--border-radius-xxxl);
+}
+
+.draw-img{
+    width: 2em;
+}

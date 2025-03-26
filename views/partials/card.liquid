@@ -14,10 +14,10 @@
 
         <form action="/{{ item.id }}" method="post">
             {% if item.is_saved %}
-                <button type="submit" class="save-favourite-btn is-saved">
-            {% else %}
+            <button type="submit" class="save-favourite-btn is-saved">
+                {% else %}
                 <button type="submit" class="save-favourite-btn">
-            {%endif%}
+                    {%endif%}
                     {% comment %} Zo kan je svgs inladen: {% endcomment %}
                     <span class="saved">
                         {% render 'svgs/favourites.svg' %}
@@ -27,18 +27,11 @@
                     </span>
                 </button>
         </form>
-        {% comment %} {% else %}
-        <form action="/{{ item.id }}" method="post">
-            <button type="submit" class="save-favourite-btn"><img class="image-to-favourite"
-                    src="/assets/tofavourite.svg" alt="to favourite"></button>
-        </form>
-        {% endif %} {% endcomment %}
-
 
     </div>
     <h3 class="product-name">
         <a class="slug" href="/cadeau/{{ item.slug | url_encode }}">{{ item.name }}</a>
-        </h3>
+    </h3>
     <div class="whapper-spotter-gived-info">
         <div class="spotter-info">
             <img class="saved-spotters-img" src="/assets/persoons.svg" alt="spotters">
