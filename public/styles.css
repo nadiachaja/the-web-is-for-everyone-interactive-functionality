@@ -979,10 +979,20 @@ input::placeholder {
     overflow-x: scroll;
     gap: 1.5em;
     margin: 1em;
+    padding: 1em;
 }
 
 li{
     list-style-type: none;
+    transition: transform 0.2s ease;
+}
+
+li:hover{
+    transform: scale(1.35) translateY(17px);
+}
+
+li.selected:hover{
+    transform: none;
 }
 
 .person-1-btn , .person-2-btn , .person-3-btn , .person-4-btn, .person-5-btn {
@@ -1058,6 +1068,12 @@ h1.person-1-name , p.person-2-name , p.person-3-name , p.person-4-name , p.perso
     border-radius: var(--border-radius-xxxl);
 }
 
+.draw-btn:hover{
+    transform: scale(1.2) translateY(-2px);
+    transition: transform 0.2s ease
+}
+
 .draw-img{
     width: 2em;
 }
+
