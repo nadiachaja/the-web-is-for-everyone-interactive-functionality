@@ -1134,6 +1134,7 @@ p.wishlist-text {
     font-weight: var(--font-weight-medium);
     display: flex;
     text-align: center;
+    justify-self: center;
     padding-top: 2em;
     padding-bottom: 1em;
 }
@@ -1146,9 +1147,11 @@ p.wishlist-text {
     display: flex;
     gap: .5em;
     text-align: center;
+    justify-self: center;
     text-decoration: none;
     font-size: var(--xs-paragraph);
     margin-bottom: 1em;
+    width: fit-content;
 }
 
 .divider-favorite {
@@ -1187,6 +1190,7 @@ p.wishlist-text {
     background-color: var(--bg-secondary);
     padding: 1em;
     border-radius: var(--border-radius-l);
+    height: fit-content;
 }
 
 .upload {
@@ -1194,6 +1198,7 @@ p.wishlist-text {
     padding: 1em;
     border-radius: var(--border-radius-xxxl);
     border: none;
+    height: fit-content;
 }
 
 .empty-favorites{
@@ -1236,4 +1241,15 @@ p.wishlist-text {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+
+    @media screen and (min-width:600px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width:600px) {
+    .wrapper-flter-chat-upload-list{
+       display: flex;
+       justify-content: space-between;
+    }
 }
