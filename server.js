@@ -137,9 +137,12 @@ app.post('/:itemId', async function (request, response) {
   const itemId = request.params.itemId;
  
   //haal eerst alle opgeslagen cadeaus op 
-  // check of itemId al bestaat in de opgeslagen cadeaus 
+  //check of itemId al bestaat in de opgeslagen cadeaus 
   //als die al bestaat voer dat een fetch method delete uit
   //als die niet bestaat voer dan de bestaande fetch hieronder uit
+
+ 
+
 
   
   await fetch('https://fdnd-agency.directus.app/items/milledoni_users_milledoni_products', {

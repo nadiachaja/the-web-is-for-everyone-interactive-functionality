@@ -113,12 +113,12 @@
 
     <p class="favourites-count">Aantal favorieten: <span class="number-count">{{ favourites | size }}</span></p>
 
-    {% if favourites and favourites.size > 0 > 0 %}
-    <ul class="all-favorite-gifts">
+    {% if favourites and favourites.size > 0 %}
+    <article class="all-favorite-gifts">
         {% for product in favourites %}
         {% include 'partials/card.liquid' with item, size: 'medium', item: product %}
         {% endfor %}
-    </ul>
+    </article>
     {% else %}
     <section class="empty-favorites">
         <h4 class="no-favorite">Geen Favorieten gevonden</h4>
