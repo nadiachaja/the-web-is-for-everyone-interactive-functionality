@@ -5,12 +5,19 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+}
+
+@supports (scroll-behavior: smooth) {
+
+    html,
+    body {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
     background-color: var(--bg-general);
-    scroll-behavior: smooth;
 }
 
 
@@ -373,15 +380,6 @@ input::placeholder {
     border-radius: var(--border-radius-xxxl);
 }
 
-/* .text-chat {
-    font-size: var(--xs-paragraph);
-    color: var(--bg-register);
-    font-weight: var(--font-weight-normal);
-    line-height: var(--line-height-general);
-    margin-left: 1em;
-} */
-
-
 .container-search {
     margin-bottom: 2em;
 }
@@ -394,14 +392,37 @@ input::placeholder {
     height: 20em;
     width: 15em;
     box-shadow: var(--box-shadow-l);
+    display: flex;
+    flex-direction: column;
     scroll-margin-top: 150px;
 }
 
-.card.size-small {
+.wrapper-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12em;
+    width: 100%;
+    position: relative;
+}
 
-    .save-favourite-btn {
-        translate: -1.7em -15.2em;
-    }
+.product-img {
+    height: 11em;
+    width: 14em;
+    display: flex;
+    justify-self: center;
+    margin: .5em;
+}
+
+.card.size-small .save-favourite-btn {
+    margin-left: auto;
+    width: 4em;
+    height: 4em;
+    border-radius: var(--border-radius-xxxl);
+    background-color: var(--bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .saved-spotters-img {
@@ -427,11 +448,11 @@ input::placeholder {
 .whapper-spotter-gived-info {
     display: flex;
     gap: 1em;
-    position: relative;
-    top: 2em;
     align-items: center;
     margin-left: 1em;
     margin-right: 1em;
+    margin-bottom: .5em;
+    margin-top: auto;
 }
 
 .spotter-info {
@@ -441,49 +462,46 @@ input::placeholder {
     gap: .2em;
 }
 
-.wrapper-img {
-    height: 12em;
-}
-
-.product-img {
-    height: 11em;
-    width: 14em;
-    display: flex;
-    justify-self: center;
-    margin: .5em;
-}
-
 .save-favourite-btn {
-    display: flex;
-    justify-self: end;
-    translate: -1em -13.5em;
-    border-radius: var(--border-radius-xxxl);
-    background-color: var(--bg-secondary);
     width: 4em;
     height: 4em;
-
-    &.is-saved {
-        .saved {
-            display: block;
-        }
-
-        .not-saved {
-            display: none;
-        }
-    }
-
-    .saved {
-        display: none;
-    }
-
-    svg {
-        height: 2.5em;
-        position: absolute;
-        left: .6em;
-        top: .6em;
-    }
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-xxxl);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 1;
+    border: 2px solid var(--bg-button);
 }
 
+
+.save-favourite-btn svg {
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+}
+
+.save-favourite-btn.is-saved .saved {
+    display: block;
+}
+
+.save-favourite-btn.is-saved .not-saved {
+    display: none;
+}
+
+.saved {
+    display: none;
+}
+
+svg {
+    height: 2.5em;
+    position: absolute;
+    left: .6em;
+    top: .6em;
+}
 
 .slug {
     display: flex;
@@ -559,19 +577,28 @@ input::placeholder {
     min-height: 100vh;
     overflow: hidden;
 
-    @media screen and (min-width:1000px) {
-        display: grid;
-        grid-template-columns: 50% 1fr max-content;
-        grid-template-rows: max-content max-content max-content 1fr;
-        grid-template-areas:
-            "back  .     ."
-            "image titel knop"
-            "image desc  knop"
-            "image extra extra"
-            "info  info  info";
+    display: flex; 
+    flex-direction: column;
+}
 
+
+@media screen and (min-width: 1000px) {
+    @supports (display: grid) {
+        .product {
+            display: grid; 
+            grid-template-columns: 50% 1fr max-content;
+            grid-template-rows: max-content max-content max-content 1fr;
+            grid-template-areas:
+                "back  .     ."
+                "image titel knop"
+                "image desc  knop"
+                "image extra extra"
+                "info  info  info";
+        }
     }
 }
+
+
 
 .go-back {
     display: flex;
@@ -679,18 +706,22 @@ input::placeholder {
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-normal);
 
-    grid-area: info;
+    grid-area: info; 
+}
 
-    @media screen and (min-width:1000px) {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-template-rows: 1fr max-content 1fr max-content 1fr;
-        grid-template-areas:
-            "smile detail"
-            "buy    ."
-            "map shop"
-            "also   ."
-            "cadeau cadeau";
+@media screen and (min-width: 1000px) {
+    @supports (display: grid) {
+        .description {
+            display: grid; 
+            grid-template-columns: max-content 1fr;
+            grid-template-rows: 1fr max-content 1fr max-content 1fr;
+            grid-template-areas:
+                "smile detail"
+                "buy    ."
+                "map shop"
+                "also   ."
+                "cadeau cadeau";
+        }
     }
 }
 
@@ -710,8 +741,6 @@ input::placeholder {
 
 .whapper-extra-info {
     grid-area: detail;
-    /* background-color: var(--bg-secondary);
-    border-radius: var(--border-radius-l); */
     padding: 1em;
     margin-left: .5em;
 }
@@ -765,8 +794,6 @@ input::placeholder {
 .gift-status-wrapper {
     grid-area: smile;
     align-self: center;
-    /* background-color: var(--bg-secondary);
-    border-radius: var(--border-radius-l); */
     padding: 1em;
     margin-right: .5em;
 }
@@ -825,7 +852,6 @@ input::placeholder {
 .map {
     display: flex;
     align-self: center;
-    justify-self: center;
     margin: 1em;
     border-radius: var(--border-radius-m);
     grid-area: map;
@@ -834,6 +860,7 @@ input::placeholder {
         height: 350px;
         width: 400px;
         align-self: unset;
+        justify-self: center;
     }
 }
 
@@ -1278,8 +1305,9 @@ p.wishlist-text {
 
 .loading {
     backdrop-filter: blur(5px);
-    background-color: rgba(163, 158, 160, 0.29); /* Zelfde kleur als voorheen */   
-    z-index: 100000; 
+    background-color: rgba(163, 158, 160, 0.29);
+    /* Zelfde kleur als voorheen */
+    z-index: 100000;
 }
 
 .wrapper-loading {
@@ -1304,20 +1332,20 @@ p.wishlist-text {
     margin: calc(5px * 2);
 }
 
-.loading-one{
+.loading-one {
     animation: preloader 0.6s ease-in-out alternate infinite;
 }
 
-.loading-two{
+.loading-two {
     animation: preloader 0.6s ease-in-out alternate 0.2s infinite;
 }
 
-.loading-three{
+.loading-three {
     animation: preloader 0.6s ease-in-out alternate 0.4s infinite;
 }
 
 @keyframes preloader {
     100% {
-      transform: scale(2);
+        transform: scale(2);
     }
-  }
+}
