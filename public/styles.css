@@ -899,7 +899,7 @@ svg {
     position: relative;
     bottom: 3em;
     font-size: var(--xs-detail-heading);
-    line-height: var(--line-height-xxl);
+    line-height: var(--line-height-m);
     font-weight: var(--font-weight-medium);
 }
 
@@ -907,7 +907,7 @@ svg {
     display: flex;
     justify-content: center;
     position: relative;
-    bottom: 3em;
+    bottom: 2.5em;
     font-size: var(--xs-detail-heading);
     line-height: var(--line-height-xxl);
     font-weight: var(--font-weight-bold);
@@ -1097,18 +1097,25 @@ p.wishlist-text {
 }
 
 .selected {
-    display: grid;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column; 
 }
 
-.draw-btn {
-    grid-area: 1 / 1;
-    justify-self: end;
-    align-self: end;
-    width: 3em;
-    height: 3em;
-    border: 1px solid var(--bg-register);
-    border-radius: var(--border-radius-xxxl);
+@supports (display: grid) {
+    .selected {
+        display: grid;
+        grid-template-rows: auto auto;
+    }
+
+    .draw-btn {
+        grid-area: 1 / 1;
+        justify-self: end;
+        align-self: end;
+        width: 3em;
+        height: 3em;
+        border: 1px solid var(--bg-register);
+        border-radius: var(--border-radius-xxxl);
+    }
 }
 
 .draw-btn:hover {
@@ -1125,7 +1132,6 @@ p.wishlist-text {
 }
 
 .wrapper-search-person-chat {
-    /* background-color: var(--bg-tertiary); */
     padding: 1em;
 }
 
@@ -1198,7 +1204,6 @@ p.wishlist-text {
 .filters-person {
     display: flex;
     gap: .5em;
-    /* background-color: var(--bg-secondary); */
     background-color: aqua;
     font-weight: var(--font-weight-medium);
     width: fit-content;
@@ -1306,7 +1311,6 @@ p.wishlist-text {
 .loading {
     backdrop-filter: blur(5px);
     background-color: rgba(163, 158, 160, 0.29);
-    /* Zelfde kleur als voorheen */
     z-index: 100000;
 }
 
