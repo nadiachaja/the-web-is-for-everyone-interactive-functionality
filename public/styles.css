@@ -397,6 +397,23 @@ input::placeholder {
     scroll-margin-top: 150px;
 }
 
+.card form.is-loading button {
+    content: url('/assets/loading.svg');
+    font-size: 13px;
+    animation: rotation 1s linear infinite;
+    padding: .5em;
+}
+
+@keyframes rotation {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 .wrapper-img {
     display: flex;
     justify-content: center;
@@ -1308,6 +1325,8 @@ p.wishlist-text {
 
 } */
 
+
+
 .loading {
     backdrop-filter: blur(5px);
     background-color: rgba(163, 158, 160, 0.29);
@@ -1352,4 +1371,21 @@ p.wishlist-text {
     100% {
         transform: scale(2);
     }
+}
+
+
+.bookmark.loading button img{
+    content: url('/assets/games.svg');
+    font-size: 16px;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation{
+0%{
+    transform: rotate(0deg);
+}
+
+100%{
+    transform: rotate(360deg);
+}
 }
