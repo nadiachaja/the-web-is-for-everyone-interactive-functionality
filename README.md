@@ -23,14 +23,14 @@ Millidoni is een bedrijf waar je cadeaus voor familie/vrienden/collega's of kenn
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framework of library gebruikt? -->
 
 ## Installatie
-1.Download NodeJS
-2.Fork deze repository
-3.Clone het op je laptop
-4.Open het in Github
-5.Open de terminal in je Github
-6.Typ in de terminal npm install om alles te installeren
-7.Typ in de terminal npm start om de server te starten
-8.Je krijg een local host in de terminal klik daarop om je project te zien
+1. Download NodeJS
+2. Fork deze repository
+3. Clone het op je laptop
+4. Open het in Github
+5. Open de terminal in je Github
+6. Typ in de terminal npm install om alles te installeren 
+7. Typ in de terminal npm start om de server te starten
+8. Je krijg een local host in de terminal klik daarop om je project te zien
 
 
 ## Bronnen
