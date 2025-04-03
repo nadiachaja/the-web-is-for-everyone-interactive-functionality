@@ -1,6 +1,4 @@
 # Milledoni
-Millidoni is een bedrijf waar je cadeaus voor familie/vrienden/collega's of kennissen kan zoeken met behulp van een AI chatbox. Ze geloven dat een cadeau mensen dichter bij elkaar brengt.
-
 
 ## Inhoudsopgave
 
@@ -12,6 +10,7 @@ Millidoni is een bedrijf waar je cadeaus voor familie/vrienden/collega's of kenn
   * [Licentie](#licentie)
 
 ## Beschrijving
+Millidoni is een bedrijf waar je cadeaus voor familie/vrienden/collega's of kennissen kan zoeken met behulp van een AI chatbox. Ze geloven dat een cadeau mensen dichter bij elkaar brengt.
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual of video toe 📸 -->
 <!-- Voeg een link toe naar GitHub Pages 🌐-->
