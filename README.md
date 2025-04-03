@@ -72,7 +72,10 @@ Ik haal eerst alle form op en loopt dan door ze allemaal heen en voeg dan een ev
 Verder in de code ga ik verder met de post dat de bookmark veranderd als het gelukt is met een if else.  
 https://github.com/nadiachaja/the-web-is-for-everyone-interactive-functionality/blob/08a9fcec4d9a692786fb6559222ac45b2183b41b/public/index.js#L4-L38
 
-**card (cadeau's)** <br>
+**Loading css**
+https://github.com/nadiachaja/the-web-is-for-everyone-interactive-functionality/blob/7b10ae82833c95cec5efa7baf9ece880b2441c00/public/styles.css#L400-L416
+
+**Card (cadeau's)** <br>
 Ik maakt hier de kaartje van de cadeau's met de bookmark wanneer het veranderd van svg.
 https://github.com/nadiachaja/the-web-is-for-everyone-interactive-functionality/blob/08a9fcec4d9a692786fb6559222ac45b2183b41b/views/partials/card.liquid#L2-L40
 
